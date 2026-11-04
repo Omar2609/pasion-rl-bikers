@@ -1,0 +1,17 @@
+{
+  "name": "pasion-rl-bikers",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web de PASION RL BIKERS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0"
+  }
+}

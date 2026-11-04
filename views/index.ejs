@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PASION RL BIKERS | Comunidad motera</title><link rel="stylesheet" href="/css/styles.css"></head><body>
+<%- include('partials/header') %>
+<main>
+<section class="hero" id="inicio"><div class="hero-content"><p class="eyebrow">UNA SOLA PASIÓN · UNA SOLA RUTA</p><h1>PASION <span>RL BIKERS</span></h1><p class="hero-copy">La hermandad se vive en cada kilómetro. Encuentra compañeros de ruta y comparte la pasión por las dos ruedas.</p><a class="btn btn-primary" href="#miembros">Conoce a los miembros</a></div><div class="hero-mark">RL</div></section>
+<section class="about section" id="nosotros"><p class="eyebrow">QUIÉNES SOMOS</p><h2>Más que un club, <span>una familia.</span></h2><p>Somos una comunidad motera unida por el respeto, la amistad y la pasión por rodar. Aquí cada ruta crea historias y cada integrante suma a nuestra hermandad.</p></section>
+<section class="section members-section" id="miembros"><div class="section-heading"><div><p class="eyebrow">NUESTRA COMUNIDAD</p><h2>Encuentra tu <span>compañero de ruta</span></h2></div><input id="memberSearch" class="search" type="search" placeholder="Buscar por nombre..." aria-label="Buscar por nombre"></div>
+<div class="stats"><div><strong><%= pilots.length %></strong><span>Pilotos</span></div><div><strong><%= copilots.length %></strong><span>Copilotos</span></div><div><strong><%= members.filter(m => m.status === 'available').length %></strong><span>Disponibles</span></div></div>
+<div class="member-columns">
+<section class="member-group"><div class="group-title"><h3>PILOTOS</h3><span><%= pilots.length %> integrantes</span></div><div class="member-list">
+<% if (!pilots.length) { %><p class="empty">Aún no hay pilotos registrados.</p><% } %>
+<% pilots.forEach(member => { %><article class="member-card" data-name="<%= member.name.toLowerCase() %>"><div class="avatar"><%= member.name.charAt(0).toUpperCase() %></div><div class="member-info"><h4><%= member.name %></h4><span class="status <%= member.status %>"><%= member.status === 'available' ? 'DISPONIBLE' : 'NO DISPONIBLE' %></span></div><% if (member.status === 'available' && member.phone) { %><a class="wa-button" href="<%= whatsappUrl(member.phone) %>" target="_blank" rel="noopener">WhatsApp</a><% } %></article><% }) %>
+</div></section>
+<section class="member-group"><div class="group-title"><h3>COPILOTOS</h3><span><%= copilots.length %> integrantes</span></div><div class="member-list">
+<% if (!copilots.length) { %><p class="empty">Aún no hay copilotos registrados.</p><% } %>
+<% copilots.forEach(member => { %><article class="member-card" data-name="<%= member.name.toLowerCase() %>"><div class="avatar"><%= member.name.charAt(0).toUpperCase() %></div><div class="member-info"><h4><%= member.name %></h4><span class="status <%= member.status %>"><%= member.status === 'available' ? 'DISPONIBLE' : 'NO DISPONIBLE' %></span></div><% if (member.status === 'available' && member.phone) { %><a class="wa-button" href="<%= whatsappUrl(member.phone) %>" target="_blank" rel="noopener">WhatsApp</a><% } %></article><% }) %>
+</div></section></div><p id="noResults" class="empty hidden">No se encontraron miembros con ese nombre.</p></section>
+<section class="contact section" id="contacto"><p class="eyebrow">SIGAMOS RODANDO</p><h2>La ruta nos <span>une.</span></h2><p>Respeto, hermandad y pasión por las dos ruedas.</p><a class="btn btn-outline" href="/admin/login">Acceso de administración</a></section>
+</main><footer><span>© <%= new Date().getFullYear() %> PASION RL BIKERS</span><span>HECHOS PARA RODAR</span></footer>
+<script src="/js/app.js"></script></body></html>
